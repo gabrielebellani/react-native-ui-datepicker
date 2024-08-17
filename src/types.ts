@@ -96,4 +96,5 @@ export interface DatePickerBaseProps {
   onChange?: SingleChange | RangeChange | MultiChange;
   initialView?: CalendarViews;
   height?: number;
+  width?: number | string;
 }
