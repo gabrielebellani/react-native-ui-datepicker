@@ -1,5 +1,5 @@
 import React, { ReactNode, memo } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ViewStyle } from 'react-native';
 import { useCalendarContext } from '../CalendarContext';
 import type { CalendarViews } from '../enums';
 import type { HeaderProps } from '../types';
@@ -19,18 +19,17 @@ const CalendarView: Record<CalendarViews, ReactNode> = {
 
 interface PropTypes extends HeaderProps {
   height?: number;
-  containerHeight?: number|string;
+  containerStyle?: ViewStyle;
   width?: number|string;
 }
 
-const Calendar = ({ buttonPrevIcon, buttonNextIcon, height, containerHeight, width }: PropTypes) => {
+const Calendar = ({ buttonPrevIcon, buttonNextIcon, height, containerStyle, width }: PropTypes) => {
   const { calendarView } = useCalendarContext();
 
   const styles = StyleSheet.create({
     container: {
       width: width || CALENDAR_WIDTH,
-      height: containerHeight || CALENDAR_HEIGHT,
-      maxHeight: containerHeight || CALENDAR_HEIGHT,
+      ...containerStyle
     },
     calendarContainer: {
       height: height || CALENDAR_HEIGHT,
