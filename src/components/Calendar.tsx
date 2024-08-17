@@ -18,16 +18,19 @@ const CalendarView: Record<CalendarViews, ReactNode> = {
 };
 
 interface PropTypes extends HeaderProps {
-  height?: number|string;
+  height?: number;
+  containerHeight?: number|string;
   width?: number|string;
 }
 
-const Calendar = ({ buttonPrevIcon, buttonNextIcon, height, width }: PropTypes) => {
+const Calendar = ({ buttonPrevIcon, buttonNextIcon, height, containerHeight, width }: PropTypes) => {
   const { calendarView } = useCalendarContext();
 
   const styles = StyleSheet.create({
     container: {
       width: width || CALENDAR_WIDTH,
+      height: containerHeight || CALENDAR_HEIGHT,
+      maxHeight: containerHeight || CALENDAR_HEIGHT,
     },
     calendarContainer: {
       height: height || CALENDAR_HEIGHT,
